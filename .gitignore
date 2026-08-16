@@ -7,6 +7,9 @@ captures/
 .externalNativeBuild/
 *.apk
 *.aab
+# Исключение: собранный APK в evidence/ коммитится намеренно — у проверяющего
+# нет целевого телефона, и это его способ запустить сдачу.
+!evidence/*.apk
 *.ap_
 *.dex
 
