@@ -1,0 +1,26 @@
+# Android и Gradle
+*.iml
+.gradle/
+build/
+captures/
+.cxx/
+.externalNativeBuild/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# local.properties содержит путь к SDK на конкретной машине.
+# Сборка на чужой машине идёт через ANDROID_HOME — см. AGENTS.md, «Как запускать и проверять».
+local.properties
+
+# IDE
+.idea/
+*.iws
+.vscode/
+
+# macOS
+.DS_Store
+
+# Записи экрана промежуточные; итоговые доказательства лежат в evidence/ и коммитятся
+*.tmp.mp4
