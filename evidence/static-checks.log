@@ -1,0 +1,32 @@
+=== Проверка отсутствия сетевого разрешения ===
+Ищем объявление разрешения, а не слово в тексте: первая версия проверки
+дала ложное срабатывание на собственном комментарии в манифесте.
+
+$ grep -nE "<uses-permission[^>]*INTERNET" minesweeper/app/src/main/AndroidManifest.xml
+РЕЗУЛЬТАТ: чисто, разрешение INTERNET не объявлено (grep вернул 1)
+
+$ grep -c "uses-permission" — сколько разрешений вообще объявлено
+0
+
+=== Разрешения в собранном APK (проверка результата, а не исходника) ===
+aapt2: /Users/fedorfalchuk/Library/Android/sdk/build-tools/37.0.0/aapt2
+package: dev.fedorfalchuk.minesweeper
+permission: dev.fedorfalchuk.minesweeper.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission: name='dev.fedorfalchuk.minesweeper.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+
+=== Проверка, что ядро игры не зависит от Android ===
+$ grep -rn "import android" .../game/
+РЕЗУЛЬТАТ: чисто, ни одного импорта android.* в ядре (grep вернул 1)
+
+=== Внешние зависимости ===
+dependencies {
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.material3)
+    implementation(libs.activity.compose)
+    implementation(libs.lifecycle.viewmodel.compose)
+    debugImplementation(libs.compose.ui.tooling)
+
+    testImplementation(libs.junit)
+}
