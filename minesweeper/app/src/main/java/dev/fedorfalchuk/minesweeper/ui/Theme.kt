@@ -2,6 +2,7 @@ package dev.fedorfalchuk.minesweeper.ui
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
@@ -61,5 +62,11 @@ fun MinesweeperTheme(
     // Цвет иконок статус-бара не трогаем намеренно: WindowCompat потребовал бы
     // зависимости androidx.core, а добавлять зависимости без вопроса запрещено.
     val colors = if (darkTheme) DarkColors else LightColors
-    MaterialTheme(colorScheme = colors, content = content)
+
+    // Surface обязателен, а не украшение: без него фон берётся из XML-темы окна,
+    // и в тёмном режиме поле темнело, а фон вокруг оставался белым.
+    // Поймано осмотром скриншота, а не тестом.
+    MaterialTheme(colorScheme = colors) {
+        Surface(color = MaterialTheme.colorScheme.background, content = content)
+    }
 }

@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--
+        Платформенная светлая тема отвечает только за окно до первой отрисовки
+        Compose. За фон самого интерфейса отвечает Surface в MinesweeperTheme —
+        без него в тёмном режиме темнели клетки, а фон вокруг поля оставался белым.
+
+        Ветки DayNight здесь нет намеренно: android:Theme.Material.DayNight
+        не существует, а Material3-вариант потянул бы зависимость
+        com.google.android.material, запрещённую спекой.
+    -->
     <style name="Theme.Minesweeper" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
