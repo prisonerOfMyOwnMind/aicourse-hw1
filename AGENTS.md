@@ -190,7 +190,8 @@ MCP-серверы, плагины и скиллы ассистента, хук�
 | lifecycle-viewmodel-compose | 2.11.0 |
 | Структура | один модуль `app`, без DI |
 | minSdk | 26 |
-| targetSdk / compileSdk | 36 |
+| targetSdk | 36 |
+| compileSdk | 37 |
 | JDK | 21 (Temurin 21.0.11 на машине разработки) |
 | Package | `dev.fedorfalchuk.minesweeper` |
 | Каталог проекта | `minesweeper/` |
